@@ -1,130 +1,501 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>Domus Sobrietatis Ministry Trust</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domus Sobrietatis Ministry Trust</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #1f2933;
+      background: #f5f7fa;
+      line-height: 1.6;
+    }
 
-body{
-font-family:Arial;
-margin:0;
-background:#f4f6f8;
-}
+    header {
+      background: linear-gradient(135deg, #1e2a38, #2f4b66);
+      color: white;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
 
-header{
-background:#1e2a38;
-color:white;
-padding:25px;
-text-align:center;
-}
+    .nav-wrap {
+      width: 90%;
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-nav{
-background:#2f3f54;
-padding:12px;
-text-align:center;
-}
+    .brand {
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+    }
 
-nav a{
-color:white;
-margin:0 15px;
-text-decoration:none;
-font-weight:bold;
-}
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
-.hero{
-padding:80px 20px;
-text-align:center;
-background:white;
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
 
-.hero h1{
-font-size:40px;
-color:#1e2a38;
-}
+    nav a:hover {
+      text-decoration: underline;
+    }
 
-.hero p{
-font-size:20px;
-max-width:700px;
-margin:auto;
-line-height:1.6;
-}
+    .hero {
+      background:
+        linear-gradient(rgba(20, 33, 48, 0.70), rgba(20, 33, 48, 0.70)),
+        url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: white;
+      padding: 110px 20px 90px;
+      text-align: center;
+    }
 
-.button{
-display:inline-block;
-margin-top:30px;
-padding:15px 30px;
-background:#1e2a38;
-color:white;
-text-decoration:none;
-border-radius:6px;
-}
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
 
-.section{
-padding:60px 20px;
-max-width:900px;
-margin:auto;
-text-align:center;
-}
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: 2.8rem;
+    }
 
-footer{
-background:#1e2a38;
-color:white;
-text-align:center;
-padding:30px;
-}
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 30px;
+      font-size: 1.15rem;
+    }
 
-</style>
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
 
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #d4a017;
+      color: #1e2a38;
+    }
+
+    .btn-primary:hover {
+      background: #e3b534;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 0;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 16px;
+      color: #1e2a38;
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+      color: #52606d;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #243b53;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .split img {
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+
+    .donate-box {
+      background: #1e2a38;
+      color: white;
+      border-radius: 16px;
+      padding: 36px;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(30,42,56,0.18);
+    }
+
+    .donate-box p {
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    .form-wrap {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #243b53;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd2d9;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .note {
+      font-size: 0.95rem;
+      color: #52606d;
+    }
+
+    footer {
+      background: #10202e;
+      color: white;
+      padding: 45px 20px;
+      margin-top: 40px;
+    }
+
+    .footer-wrap {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    footer h3, footer h4 {
+      margin-top: 0;
+    }
+
+    footer a {
+      color: #d9e2ec;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .small {
+      font-size: 0.9rem;
+      color: #bcccdc;
+    }
+
+    @media (max-width: 800px) {
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+
+      .nav-wrap {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-<h2>Domus Sobrietatis Ministry Trust</h2>
-</header>
+  <header>
+    <div class="nav-wrap">
+      <div class="brand">Domus Sobrietatis Ministry Trust</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#apply">Apply</a>
+        <a href="#volunteer">Volunteer</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<nav>
-<a href="#">Home</a>
-<a href="#">About</a>
-<a href="#">Programs</a>
-<a href="#">Donate</a>
-<a href="#">Contact</a>
-</nav>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Faith-Based Recovery Housing for Veterans</h1>
+      <p>
+        Domus Sobrietatis Ministry Trust exists to provide safe sober living, spiritual encouragement,
+        structure, and long-term recovery support for veterans rebuilding their lives in Lakewood, Ohio.
+      </p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#donate">Donate to the Mission</a>
+        <a class="btn btn-secondary" href="#apply">Apply for Housing</a>
+      </div>
+    </div>
+  </section>
 
-<div class="hero">
+  <section class="section" id="about">
+    <h2>About Our Mission</h2>
+    <p class="section-intro">
+      We believe recovery requires stability, accountability, community, and purpose. Our ministry supports
+      veterans through faith-based sober living and recovery-centered programming designed to help them move
+      toward long-term independence and wholeness.
+    </p>
 
-<h1>Faith-Based Recovery Housing for Veterans</h1>
+    <div class="split">
+      <div>
+        <h3>What We Provide</h3>
+        <p>
+          Our goal is to create a structured and supportive environment where residents can heal, rebuild,
+          and move forward with dignity. We focus on safe housing, clear expectations, peer support, and
+          spiritual growth.
+        </p>
+        <p>
+          This website can serve as your public-facing home for donors, residents, volunteers, community
+          partners, and referral sources.
+        </p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Community support meeting" />
+      </div>
+    </div>
+  </section>
 
-<p>
-Located in Lakewood, Ohio, Domus Sobrietatis Ministry Trust provides
-safe sober housing, spiritual mentorship, and recovery support for veterans
-rebuilding their lives.
-</p>
+  <section class="section" id="programs">
+    <h2>Programs & Services</h2>
+    <p class="section-intro">
+      These are example sections you can keep, edit, or expand as the ministry grows.
+    </p>
 
-<a class="button" href="#">Support the Mission</a>
+    <div class="cards">
+      <div class="card">
+        <h3>Sober Living Housing</h3>
+        <p>
+          Structured housing with expectations, accountability, and a supportive recovery environment.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Spiritual Support</h3>
+        <p>
+          Faith-based encouragement, mentorship, prayer, and values-centered recovery guidance.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Veteran Stabilization</h3>
+        <p>
+          Practical support for veterans seeking a steady environment while rebuilding life after addiction.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Community Reintegration</h3>
+        <p>
+          Support toward employment readiness, routine, responsibility, and healthy community involvement.
+        </p>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section class="section" id="donate">
+    <div class="donate-box">
+      <h2 style="color:white; margin-top:0;">Support the Mission</h2>
+      <p>
+        Donations help support housing, supplies, resident support, ministry operations, and the ongoing
+        development of faith-based recovery services for veterans.
+      </p>
 
-<div class="section">
+      <a class="btn btn-primary" href="https://www.paypal.com/donate" target="_blank" rel="noopener noreferrer">
+        Donate with PayPal
+      </a>
 
-<h2>Our Mission</h2>
+      <p class="small" style="margin-top:18px;">
+        Replace this PayPal link with your real donation link when ready.
+      </p>
+    </div>
+  </section>
 
-<p>
-We believe recovery requires community, accountability, and faith.
-Our ministry exists to provide veterans with a stable environment where
-they can rebuild their lives through sobriety, purpose, and service.
-</p>
+  <section class="section" id="apply">
+    <h2>Apply for Housing</h2>
+    <p class="section-intro">
+      This is a simple starter form. Since GitHub Pages does not process forms by itself, the easiest
+      free option is to have submissions sent by email for now.
+    </p>
 
-</div>
+    <div class="form-wrap">
+      <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+        <div>
+          <label for="name">Full Name</label>
+          <input id="name" name="Full Name" type="text" required />
+        </div>
 
-<footer>
+        <div>
+          <label for="email">Email Address</label>
+          <input id="email" name="Email" type="email" required />
+        </div>
 
-Domus Sobrietatis Ministry Trust  
-Lakewood, Ohio
+        <div>
+          <label for="phone">Phone Number</label>
+          <input id="phone" name="Phone" type="tel" />
+        </div>
 
-</footer>
+        <div>
+          <label for="veteran">Are you a veteran?</label>
+          <select id="veteran" name="Veteran Status">
+            <option>Yes</option>
+            <option>No</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message">Tell us a little about your situation</label>
+          <textarea id="message" name="Message"></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit" style="border:none; cursor:pointer;">
+          Submit Application Inquiry
+        </button>
+      </form>
+      <p class="note">
+        Change <strong>youremail@example.com</strong> to the email address where you want application inquiries sent.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="volunteer">
+    <h2>Volunteer With Us</h2>
+    <p class="section-intro">
+      Community members can support the mission through mentorship, outreach, transportation help,
+      household donations, event support, and other forms of service.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Mentorship</h3>
+        <p>Encourage residents through accountability, conversation, and consistent support.</p>
+      </div>
+      <div class="card">
+        <h3>Supplies & Donations</h3>
+        <p>Help provide household goods, hygiene items, food support, and move-in essentials.</p>
+      </div>
+      <div class="card">
+        <h3>Community Support</h3>
+        <p>Partner with the ministry through outreach, referrals, events, and service projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p class="section-intro">
+      Reach out for referrals, donations, volunteer interest, or general ministry questions.
+    </p>
+
+    <div class="form-wrap">
+      <p><strong>Organization:</strong> Domus Sobrietatis Ministry Trust</p>
+      <p><strong>Location:</strong> Lakewood, Ohio</p>
+      <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+      <p><strong>Phone:</strong> (555) 555-5555</p>
+      <p class="note">
+        Replace the sample email and phone number with your real contact details.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <h3>Domus Sobrietatis Ministry Trust</h3>
+        <p class="small">
+          Faith-based sober living and recovery support for veterans.
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="#about">About</a></p>
+        <p><a href="#programs">Programs</a></p>
+        <p><a href="#donate">Donate</a></p>
+        <p><a href="#apply">Apply</a></p>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p class="small">Lakewood, Ohio</p>
+        <p class="small">youremail@example.com</p>
+        <p class="small">(555) 555-5555</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
-
 </html>
