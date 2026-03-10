@@ -1,2 +1,2 @@
-# akabadfeeling.github.io
+# https://akabadfeeling-spec.github.io/akabadfeeling.github.io/
 DSMT website
